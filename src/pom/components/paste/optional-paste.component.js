@@ -24,6 +24,10 @@ class OptionalPasteComponent extends BaseComponent {
     get choosePasteExpiration() {
         return $('//li[text()="10 Minutes"]');
     }
+
+    get submitBtn() {
+        return this.rootElement.$('button[type="submit"]');
+    }
 }
 
 module.exports = OptionalPasteComponent;

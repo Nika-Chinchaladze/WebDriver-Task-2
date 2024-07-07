@@ -16,7 +16,7 @@ describe("Test PasteBin page", () => {
         `;
         const nameTitle = "how to gain dominance among developers";
 
-        // Act
+        // Act - First Round
         await page("new").postFormText.setValue(code);
         await page("optional").syntaxHighlighting.click();
         await page("optional").chooseSyntaxHighlighting.click();
@@ -24,7 +24,7 @@ describe("Test PasteBin page", () => {
         await page("optional").choosePasteExpiration.click();
         await page("optional").postFormName.setValue(nameTitle);
 
-        // Assert
+        // Assert - First Round
         const postFormText = await page("new").postFormText.getValue();
         const syntaxList = await page("optional").syntaxHighlighting.getValue();
         const expirationList = await page("optional").pasteExpiration.getValue();
@@ -35,7 +35,14 @@ describe("Test PasteBin page", () => {
         expect(expirationList).toHaveText("10 Minutes");
         expect(postFormName).toHaveText(nameTitle);
 
-        await browser.pause(10000);
+        // Act - Second Round
+        await page("optional").submitBtn.click();
+
+        // Assert - Second Round
+        const title = await browser.getTitle();
+        const enternedCode = await $(".bash ol").getText();
+
+        await expect(title).toContain(nameTitle);
 
     });
 });
