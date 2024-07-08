@@ -4,7 +4,6 @@ const OptionalPasteComponent = require("../pom/components/paste/optional-paste.c
 const SubmitComponent = require("../pom/components/submit/submit.component");
 
 /**
- * 
  * @param name {'base' | 'new' | 'optional' | 'submit'} 
  * @returns 
  */
