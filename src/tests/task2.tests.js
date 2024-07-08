@@ -40,9 +40,11 @@ describe("Test PasteBin page", () => {
 
         // Assert - Second Round
         const title = await browser.getTitle();
-        const enternedCode = await $(".bash ol").getText();
+        const bash = await page("submit").bashSyntax.getText();
+        const enternedCode = await page("submit").enteredCode.getText();
 
-        await expect(title).toContain(nameTitle);
-
+        expect(title).toContain(nameTitle);
+        expect(bash).toContain("Bash");
+        expect(enternedCode.trim()).toContain(code.trim());
     });
 });

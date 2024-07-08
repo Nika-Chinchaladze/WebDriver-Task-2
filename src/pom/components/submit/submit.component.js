@@ -2,11 +2,15 @@ const BaseComponent = require("../common/base.component");
 
 class SubmitComponent extends BaseComponent {
     constructor() {
-        super(".bash")
+        super(".post-view")
+    }
+    
+    get enteredCode() {
+        return this.rootElement.$(".bash ol");
     }
 
-    get enteredCode() {
-        return this.rootElement;
+    get bashSyntax() {
+        return this.rootElement.$(".left a");
     }
 }
 
